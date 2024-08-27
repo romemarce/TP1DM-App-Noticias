@@ -1,0 +1,7 @@
+{
+  "name": "TP1DM-App-Noticias",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

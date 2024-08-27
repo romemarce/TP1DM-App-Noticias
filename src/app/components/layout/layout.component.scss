@@ -1,0 +1,23 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Centra el contenido si es necesario */
+}
+
+ion-content {
+    flex: 1;
+    /* Permite que ion-content se expanda */
+}
+
+ion-footer {
+    position: static;
+    /* Mantiene el footer en la parte inferior */
+}

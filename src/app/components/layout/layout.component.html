@@ -1,17 +1,24 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>{{ title }} - {{ isLoggedIn ? 'Logged In' : 'Logged Out' }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-menu [profile]="profile"></app-menu>
+<div class="ion-page" id="main-content">
 
-<ion-content [fullscreen]="true">
-  <div class="main-content">
-    <ng-content></ng-content>
-  </div>
-</ion-content>
-
-<ion-footer>
-  <ion-toolbar>
-    <ion-title>Dev. Romero Marcelo</ion-title>
-  </ion-toolbar>
-</ion-footer>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title>{{ title }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content [fullscreen]="true">
+    <div class="main-content">
+      <ng-content></ng-content>
+    </div>
+  </ion-content>
+  
+  <ion-footer>
+    <ion-toolbar>
+      <ion-title>Dev. Romero Marcelo</ion-title>
+    </ion-toolbar>
+  </ion-footer>
+</div>

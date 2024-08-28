@@ -1,0 +1,19 @@
+<ion-menu contentId="main-content">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>Menú Principal</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="ion-padding">
+    <ion-list *ngIf="menuList">
+     
+      <ion-item *ngFor="let item of menuList" [href]="item.path">
+        <ion-label>
+          <ion-icon *ngIf="item.icon !== ''" [name]="item.icon"></ion-icon>
+          {{item.name}}
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+  </ion-content>
+</ion-menu>

@@ -25,7 +25,7 @@ describe('MenuComponent', () => {
 
   it('Deberia mostrar al menos el item iniciar sesion si no esta logueado', ()=>{
     component.profile.isLoggedIn = false
-    component.validateUser();
+    component.checkProfileUser();
 
     fixture.detectChanges();
     const compile = fixture.debugElement.nativeElement;
@@ -34,7 +34,7 @@ describe('MenuComponent', () => {
 
   it('Deberia mostrar al menos el item dashboard si esta logueado', ()=>{
     component.profile.isLoggedIn = true // logueado
-    component.validateUser();
+    component.checkProfileUser();
 
     fixture.detectChanges();
     const compile = fixture.debugElement.nativeElement;

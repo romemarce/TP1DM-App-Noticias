@@ -9,36 +9,34 @@ import { IMenuList, initIProfile, IProfile } from 'src/types';
 export class MenuComponent implements OnInit {
   public menuList: IMenuList[] = [];
 
-  @Input() profile: IProfile = initIProfile;
+  @Input() profile: IProfile = { isLoggedIn: false };
 
   constructor() {}
 
-  validateUser() {
-    if (this.profile.isLoggedIn) {
-      this.menuList = [
-        {
-          path: '/dashboard',
-          name: 'Dashboard',
-          icon: 'home-sharp',
-        },
-      ];
-    } else {
-      this.menuList = [
-        {
-          path: '/home/login',
-          name: 'Iniciar Sesion',
-          icon: 'person-sharp',
-        },
-        {
-          path: '/home/register',
-          name: 'Crear cuenta',
-          icon: 'person-add-sharp',
-        },
-      ];
-    }
+  checkProfileUser() { 
+    this.menuList = this.profile.isLoggedIn
+      ? [
+          {
+            path: '/dashboard',
+            name: 'Dashboard',
+            icon: 'home-sharp',
+          },
+        ]
+      : [
+          {
+            path: '/home/login',
+            name: 'Iniciar Sesion',
+            icon: 'person-sharp',
+          },
+          {
+            path: '/home/register',
+            name: 'Crear cuenta',
+            icon: 'person-add-sharp',
+          },
+        ];
   }
 
   ngOnInit() {
-    this.validateUser()
+    this.checkProfileUser();
   }
 }

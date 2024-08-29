@@ -11,11 +11,9 @@ export class LayoutComponent implements OnInit {
 
   public isLoggedIn: boolean = false;
 
-  public profile: IProfile;
+  public profile: IProfile = initIProfile;
 
-  constructor(){
-    this.profile = { isLoggedIn: true }
-  }
+  constructor(){}
 
   ngOnInit() { }
 }

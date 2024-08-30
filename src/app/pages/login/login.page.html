@@ -1,5 +1,32 @@
-<app-layout [title]="'login'">
+<app-layout [title]="'Login page'">
   <div id="container">
-    <p>Login Page</p>
+
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="8">
+
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Iniciar sesión</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
+                <ion-item>
+                  <ion-input [formControl]="user" labelPlacement="stacked" label="Usuario"
+                    placeholder="Ingresar correo electronico" />
+                </ion-item>
+                <ion-item>
+                  <ion-input [formControl]="password" type="password" labelPlacement="stacked" label="Contraseña"
+                    placeholder="Ingresar contraseña" />
+                </ion-item>
+                <ion-button expand="full" type="submit">Iniciar Sesión</ion-button>
+              </form>
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </app-layout>

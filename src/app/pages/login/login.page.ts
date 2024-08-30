@@ -13,23 +13,18 @@ import {
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  loginForm: FormGroup = new FormGroup({});
+  loginForm: FormGroup = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(6)]),
+  })
 
-  user = new FormControl('');
-  password = new FormControl('');
+  constructor() {}
 
-  constructor(private formBuilder: FormBuilder) {}
-
-  ngOnInit() {
-    this.loginForm = new FormBuilder().group({
-      user: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
-    });
-  }
+  ngOnInit() { }
 
   handleSubmit() {
-    // if (this.loginForm.valid) {
-      console.log({ user: this.user.value, password: this.password.value });
-    // }
+    if(this.loginForm.valid){
+      console.log(this.loginForm.value);      
+    }
   }
 }

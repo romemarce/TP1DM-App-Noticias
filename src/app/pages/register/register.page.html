@@ -1,5 +1,35 @@
 <app-layout [title]="'register'">
   <div id="container">
-    <p>Register Page</p>
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="8">
+
+          <ion-card>
+            <ion-card-header>
+              <ion-card-title>Iniciar sesión</ion-card-title>
+            </ion-card-header>
+
+            <ion-card-content>
+              <form [formGroup]="registerForm" (ngSubmit)="handleSubmit()">
+                <ion-item>
+                  <ion-input formControlName="email" labelPlacement="stacked" label="Email"
+                    placeholder="Ingresar correo electronico" />
+                </ion-item>
+                <ion-item>
+                  <ion-input formControlName="password" type="password" labelPlacement="stacked" label="Contraseña"
+                    placeholder="Ingresar contraseña" />
+                </ion-item>
+                <ion-item>
+                  <ion-input formControlName="repassword" type="password" labelPlacement="stacked" label="Repetir Contraseña"
+                    placeholder="Repetir contraseña" />
+                </ion-item>
+                <ion-button expand="full" [disabled]="!registerForm.valid" type="submit">Iniciar Sesión</ion-button>
+              </form>
+            </ion-card-content>
+          </ion-card>
+
+        </ion-col>
+      </ion-row>
+    </ion-grid>
   </div>
 </app-layout>

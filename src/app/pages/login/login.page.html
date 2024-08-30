@@ -1,6 +1,5 @@
 <app-layout [title]="'Login page'">
   <div id="container">
-
     <ion-grid>
       <ion-row class="ion-justify-content-center">
         <ion-col size="8">
@@ -13,14 +12,14 @@
             <ion-card-content>
               <form [formGroup]="loginForm" (ngSubmit)="handleSubmit()">
                 <ion-item>
-                  <ion-input [formControl]="user" labelPlacement="stacked" label="Usuario"
+                  <ion-input formControlName="email" labelPlacement="stacked" label="Email"
                     placeholder="Ingresar correo electronico" />
                 </ion-item>
                 <ion-item>
-                  <ion-input [formControl]="password" type="password" labelPlacement="stacked" label="Contraseña"
+                  <ion-input formControlName="password" type="password" labelPlacement="stacked" label="Contraseña"
                     placeholder="Ingresar contraseña" />
                 </ion-item>
-                <ion-button expand="full" type="submit">Iniciar Sesión</ion-button>
+                <ion-button expand="full" [disabled]="!loginForm.valid" type="submit">Iniciar Sesión</ion-button>
               </form>
             </ion-card-content>
           </ion-card>

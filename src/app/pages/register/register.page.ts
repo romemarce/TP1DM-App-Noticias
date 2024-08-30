@@ -5,6 +5,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -19,13 +20,19 @@ export class RegisterPage implements OnInit {
     repassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   })
 
-  constructor() {}
+  constructor(private toastController: ToastController) {}
 
   ngOnInit() { }
 
-  handleSubmit() {
+  async handleSubmit() {
     if(this.registerForm.valid){
-      console.log(this.registerForm.value);      
+      console.log(this.registerForm.value); 
+      const toast = await this.toastController.create({
+        message: 'Servicio no disponible',
+        duration: 1500,
+        position:'middle'
+      });
+      await toast.present();
     }
   }
 }

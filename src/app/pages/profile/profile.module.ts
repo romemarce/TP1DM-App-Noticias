@@ -4,21 +4,19 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DashboardPageRoutingModule } from './dashboard-routing.module';
+import { ProfilePageRoutingModule } from './profile-routing.module';
 
-import { DashboardPage } from './dashboard.page';
+import { ProfilePage } from './profile.page';
 import { LayoutModule } from 'src/app/components/layout/layout.module';
-import { CardModule } from "../../components/card/card.module";
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    DashboardPageRoutingModule,
-    LayoutModule,
-    CardModule
-],
-  declarations: [DashboardPage]
+    ProfilePageRoutingModule,
+    LayoutModule
+  ],
+  declarations: [ProfilePage]
 })
-export class DashboardPageModule {}
+export class ProfilePageModule {}

@@ -6,6 +6,7 @@ import { HomePage } from './home.page';
 
 import { HomePageRoutingModule } from './home-routing.module';
 import { LayoutModule } from '../../components/layout/layout.module';
+import { LoadingComponent } from 'src/app/components/loading/loading.component';
 
 @NgModule({
   imports: [
@@ -15,6 +16,6 @@ import { LayoutModule } from '../../components/layout/layout.module';
     HomePageRoutingModule,
     LayoutModule,
   ],
-  declarations: [HomePage],
+  declarations: [HomePage, LoadingComponent],
 })
 export class HomePageModule {}

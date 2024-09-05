@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NewsApiService } from 'src/app/services/newsapi.service';
+import { IPost, IUser } from 'src/types';
 
 @Component({
   selector: 'app-dashboard',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
+  user: IUser = { name: 'Admin' };
+  post: IPost[] = [];
+  newsApiService = new NewsApiService();
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
+  async ngOnInit() {
+    const posts = await this.newsApiService.getPost();
+    this.post = posts;
   }
-
 }

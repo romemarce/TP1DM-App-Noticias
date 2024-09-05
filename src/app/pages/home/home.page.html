@@ -1,5 +1,30 @@
-<app-layout [title]="'home'">
-    <div id="container">
-      Home page
-    </div>
+<app-layout [title]="'Inicio'">
+  <div id="container" class="home">
+    <ion-grid class="ion-text-center">
+      <ion-col>
+        <ion-row>
+          <ion-text color="primary">
+            <h1>¡Bienvenido a Mi App de Noticias!</h1>
+          </ion-text>
+          
+          <ion-text color="secondary">
+            <h3>Inicia sesión para acceder a tus noticias personalizadas.</h3>
+          </ion-text>
+        </ion-row>
+        <br>
+        <ion-row>
+          <ion-toolbar>
+            <ion-buttons slot="start">
+              <ion-button [href]="'/home/login'">Iniciar Sesion</ion-button>
+            </ion-buttons>
+            
+            
+            <ion-buttons slot="end">
+              <ion-button [href]="'/home/register'">Registrarse</ion-button>
+            </ion-buttons>
+          </ion-toolbar>
+        </ion-row>
+      </ion-col>
+    </ion-grid>
+  </div>
 </app-layout>

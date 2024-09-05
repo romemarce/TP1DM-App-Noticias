@@ -27,3 +27,21 @@ export const initIMenuList:IMenuList = {
   path: '',
   icon: ''
 }
+
+export interface IUser {
+  name: string
+}
+
+export const initIUser:IUser = {
+  name: ''
+}
+
+export interface IPost {
+  author: string;
+  content: string;
+  description: string;
+  publishedAt: string;
+  title: string;
+  url: string;
+  urlToImage: string;
+}

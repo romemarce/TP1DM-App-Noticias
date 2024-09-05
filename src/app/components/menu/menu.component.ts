@@ -24,8 +24,13 @@ export class MenuComponent implements OnInit {
         ]
       : [
           {
+            path: '/home',
+            name: 'Inicio',
+            icon: 'person-sharp',
+          },
+          {
             path: '/home/login',
-            name: 'Iniciar Sesion',
+            name: 'Iniciar sesión',
             icon: 'person-sharp',
           },
           {

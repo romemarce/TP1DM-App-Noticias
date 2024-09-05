@@ -6,12 +6,10 @@ import { IError, initIError } from 'src/types';
   templateUrl: './error.component.html',
   styleUrls: ['./error.component.scss'],
 })
-export class ErrorComponent implements OnInit {
+export class ErrorComponent {
   @Input() error: IError;
 
   constructor() {
     this.error = initIError;
   }
-
-  ngOnInit() {}
 }

@@ -6,9 +6,6 @@ import { IPost } from 'src/types';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
 })
-export class CardComponent implements OnInit {
+export class CardComponent {
   @Input() post: IPost | undefined;
-  constructor() {}
-
-  ngOnInit() {}
 }

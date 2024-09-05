@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { NewsApiService } from 'src/app/services/newsapi.service';
-import { IPost, IUser } from 'src/types';
+import { initIUserProfile, IPost, IUserProfile } from 'src/types';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,13 +10,23 @@ import { IPost, IUser } from 'src/types';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  user: IUser = { name: 'Admin' };
+  user: IUserProfile = initIUserProfile;
   post: IPost[] = [];
   newsApiService = new NewsApiService();
-  constructor() {}
+
+  constructor(private router: Router, private auth: AuthService) {
+    this.auth = new AuthService();
+  }
 
   async ngOnInit() {
-    const posts = await this.newsApiService.getPost();
-    this.post = posts;
+    this.user = this.auth.currentUser();
+    const isLoggedIn = this.auth.isLoggedIn();
+
+    if (isLoggedIn) {
+      const posts = await this.newsApiService.getPost();
+      this.post = posts;
+    } else {
+      this.router.navigate(['./home']);
+    }
   }
 }

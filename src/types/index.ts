@@ -45,3 +45,17 @@ export interface IPost {
   url: string;
   urlToImage: string;
 }
+
+export interface IAuthLogin {
+  email: string,
+  password: string
+}
+
+export interface IUserProfile {
+  email: string,
+  name: string,
+}
+export const initIUserProfile: IUserProfile = {
+  email: '',
+  name: ''
+}

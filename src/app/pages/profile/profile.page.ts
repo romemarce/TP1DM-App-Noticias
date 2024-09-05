@@ -5,31 +5,25 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './profile.page.html',
   styleUrls: ['./profile.page.scss'],
 })
-export class ProfilePage implements OnInit {
+export class ProfilePage {
   profile = {
     name: '',
     email: '',
     phone: '',
     access: {
       permissions: false,
-      notifications: false
+      notifications: false,
     },
     preferences: {
-      pageSize: "10",
+      pageSize: '10',
       language: 'es',
-      category: 'business'
-    }
+      category: 'business',
+    },
   };
-
-  constructor() { }
-
-  ngOnInit() { }
 
   saveProfile() {
     // Implementar la lógica para guardar el perfil
     console.log('Perfil guardado:', this.profile);
   }
-  goBack(){}
-
-
+  goBack() {}
 }

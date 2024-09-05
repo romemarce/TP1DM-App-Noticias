@@ -6,14 +6,6 @@ import { initIProfile, IProfile } from 'src/types';
   templateUrl: './layout.component.html',
   styleUrls: ['./layout.component.scss'],
 })
-export class LayoutComponent implements OnInit {
+export class LayoutComponent {
   @Input() title: string = 'test';
-
-  public isLoggedIn: boolean = false;
-
-  public profile: IProfile = initIProfile;
-
-  constructor(){}
-
-  ngOnInit() { }
 }

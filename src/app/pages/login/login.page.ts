@@ -7,15 +7,16 @@ import {
   Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
+import { AuthService } from 'src/app/services/auth.service';
+import { IAuthLogin } from 'src/types';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
-  correctUser = { email: 'admin@uner.com', password: 'admin' };
-
+export class LoginPage {
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -24,16 +25,29 @@ export class LoginPage implements OnInit {
     ]),
   });
 
-  constructor(private router:Router) {}
+  constructor(
+    private router: Router,
+    private toastController: ToastController
+  ) {}
 
-  ngOnInit() {}
+  async handleSubmit() {
+    if (this.loginForm.valid) {
+      const auth = new AuthService();
+      let aux: IAuthLogin = this.loginForm.value;
 
-  handleSubmit() {
-      if (this.loginForm.valid) {
-        let aux = this.loginForm.value
-        if(this.correctUser.email === aux.email && this.correctUser.password === aux.password)
-        //  console.log(this.loginForm.value);
-          this.router.navigate(['/dashboard'])
+      const isLogged = auth.login(aux);
+      if (isLogged) {
+        const user = auth.currentUser();
+        console.log({ user });
+        this.router.navigate(['/dashboard']);
+      } else {
+        const toast = await this.toastController.create({
+          message: 'Servicio no disponible',
+          duration: 1500,
+          position: 'middle',
+        });
+        await toast.present();
       }
+    }
   }
 }

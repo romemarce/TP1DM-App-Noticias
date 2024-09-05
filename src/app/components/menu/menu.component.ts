@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { IMenuList, initIProfile, IProfile } from 'src/types';
+import { AuthService } from 'src/app/services/auth.service';
+import { IMenuList, IProfile } from 'src/types';
 
 @Component({
   selector: 'app-menu',
@@ -10,11 +11,14 @@ export class MenuComponent implements OnInit {
   public menuList: IMenuList[] = [];
 
   @Input() profile: IProfile = { isLoggedIn: false };
+  @Input() isLoggedIn: boolean = false;
 
-  constructor() {}
+  constructor(private auth: AuthService) {
+    this.auth = new AuthService();
+  }
 
-  checkProfileUser() { 
-    this.menuList = this.profile.isLoggedIn
+  checkProfileUser() {
+    this.menuList = this.isLoggedIn
       ? [
           {
             path: '/dashboard',
@@ -43,5 +47,12 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {
     this.checkProfileUser();
+  }
+
+  handleLogout() {
+    console.log('clicker');
+
+    this.auth.logout();
+    // this.router.navigate(['./home']);
   }
 }

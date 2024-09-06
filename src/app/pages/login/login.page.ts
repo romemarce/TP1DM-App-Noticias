@@ -38,7 +38,7 @@ export class LoginPage {
       const isLogged = auth.login(aux);
       if (isLogged) {
         const user = auth.currentUser();
-        console.log({ user });
+        console.log(user);
         this.router.navigate(['/dashboard']);
       } else {
         const toast = await this.toastController.create({

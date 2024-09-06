@@ -14,17 +14,17 @@ export class DashboardPage implements OnInit {
   post: IPost[] = [];
   newsApiService = new NewsApiService();
 
+  public isLoggedIn:boolean = false;
+
   constructor(private router: Router, private auth: AuthService) {
     this.auth = new AuthService();
+    this.isLoggedIn = this.auth.isLoggedIn();
   }
 
   async ngOnInit() {
-    this.user = this.auth.currentUser();
-    const isLoggedIn = this.auth.isLoggedIn();
-
-    if (isLoggedIn) {
-      const posts = await this.newsApiService.getPost();
-      this.post = posts;
+    if (this.isLoggedIn) {
+      this.user = this.auth.currentUser();
+      this.post = (await this.newsApiService.getPost()) || [];
     } else {
       this.router.navigate(['./home']);
     }

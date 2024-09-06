@@ -1,1 +1,1 @@
-export const isNewsApiEnable = false
+export const isNewsApiEnable = true

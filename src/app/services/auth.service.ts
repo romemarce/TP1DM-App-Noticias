@@ -14,7 +14,7 @@ export class AuthService {
   login({ email, password }: IAuthLogin): boolean {
     if (email === this.correctEmail && password === this.correctPassword) {
       this.userProfile.email = email;
-      this.userProfile.name = email;
+      this.userProfile.name = "Admin";
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('username', JSON.stringify(this.userProfile));
       return true;

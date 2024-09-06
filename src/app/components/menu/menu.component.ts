@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { IMenuList, IProfile } from 'src/types';
+import { IMenuList, initIUserProfile, IProfile, IUserProfile } from 'src/types';
 
 @Component({
   selector: 'app-menu',
@@ -9,12 +10,16 @@ import { IMenuList, IProfile } from 'src/types';
 })
 export class MenuComponent implements OnInit {
   public menuList: IMenuList[] = [];
+  public currentUser: IUserProfile = initIUserProfile;
+  public isLoggedIn: boolean;
 
-  @Input() profile: IProfile = { isLoggedIn: false };
-  @Input() isLoggedIn: boolean = false;
-
-  constructor(private auth: AuthService) {
+  constructor(private auth: AuthService, private router: Router) {
     this.auth = new AuthService();
+    this.isLoggedIn = this.auth.isLoggedIn();
+  }
+
+  ngOnInit() {
+    this.checkProfileUser();
   }
 
   checkProfileUser() {
@@ -44,15 +49,10 @@ export class MenuComponent implements OnInit {
           },
         ];
   }
-
-  ngOnInit() {
-    this.checkProfileUser();
-  }
-
   handleLogout() {
     console.log('clicker');
 
     this.auth.logout();
-    // this.router.navigate(['./home']);
+    this.router.navigate(['./home']);
   }
 }

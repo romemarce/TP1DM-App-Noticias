@@ -1,11 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
-import { ToastController } from '@ionic/angular';
+import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AlertToast } from 'src/app/helpers/utils';
 
 @Component({
   selector: 'app-register',
@@ -25,17 +20,11 @@ export class RegisterPage {
     ]),
   });
 
-  constructor(private toastController: ToastController) {}
+  constructor() {}
 
   async handleSubmit() {
     if (this.registerForm.valid) {
-      console.log(this.registerForm.value);
-      const toast = await this.toastController.create({
-        message: 'Servicio no disponible',
-        duration: 1500,
-        position: 'middle',
-      });
-      await toast.present();
+      AlertToast('Servicio no disponible');
     }
   }
 }

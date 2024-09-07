@@ -8,6 +8,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AlertToast } from 'src/app/helpers/utils';
 import { AuthService } from 'src/app/services/auth.service';
 import { IAuthLogin } from 'src/types';
 
@@ -25,28 +26,19 @@ export class LoginPage {
     ]),
   });
 
-  constructor(
-    private router: Router,
-    private toastController: ToastController
-  ) {}
+  constructor(private router: Router, private auth: AuthService) {}
 
   async handleSubmit() {
     if (this.loginForm.valid) {
-      const auth = new AuthService();
       let aux: IAuthLogin = this.loginForm.value;
 
-      const isLogged = auth.login(aux);
+      const isLogged = this.auth.login(aux);
       if (isLogged) {
-        const user = auth.currentUser();
+        const user = this.auth.currentUser();
         console.log(user);
         this.router.navigate(['/dashboard']);
       } else {
-        const toast = await this.toastController.create({
-          message: 'Servicio no disponible',
-          duration: 1500,
-          position: 'middle',
-        });
-        await toast.present();
+        AlertToast('Usuario y/o Contraseña invalidos');
       }
     }
   }

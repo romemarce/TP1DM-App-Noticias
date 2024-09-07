@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 import { IError, initIError } from 'src/types';
 
 @Component({
@@ -8,17 +10,14 @@ import { IError, initIError } from 'src/types';
 })
 export class HomePage implements OnInit{
 
-  public isError:boolean = false;
-  public error: IError = initIError;
-
-  constructor() {}
+  constructor(private auth:AuthService, private router: Router) {
+    this.auth = new AuthService();
+  }
 
   ngOnInit(){
-    this.error = {
-      isError: true,
-      title: "Desconocido",
-      code: 400,
-      message: "Se produjo un error desconocido"
+    const isLoggedIn = this.auth.isLoggedIn();
+    if (isLoggedIn) {
+      this.router.navigate(['/dashboard'])
     }
   }
 

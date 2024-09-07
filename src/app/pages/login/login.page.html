@@ -19,6 +19,9 @@
                   <ion-input formControlName="password" type="password" labelPlacement="stacked" label="Contraseña"
                     placeholder="Ingresar contraseña" />
                 </ion-item>
+                <br>
+                <ion-button size="small" fill="clear" color="primary" [href]="['/home/register']">Aún no estas registrado ?</ion-button>
+                <br>  
                 <ion-button expand="full" [disabled]="!loginForm.valid" type="submit">Iniciar Sesión</ion-button>
               </form>
             </ion-card-content>

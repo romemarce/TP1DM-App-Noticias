@@ -1,20 +1,21 @@
 import { Injectable } from '@angular/core';
+import { correctEmail, correctPassword } from 'src/contants';
 import { IAuthLogin, IUserProfile } from 'src/types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private correctEmail = 'admin@uner.com';
-  private correctPassword = 'admin';
-  private userProfile = { email: '', name: '' };
+  private userProfile: IUserProfile = {
+    email: correctEmail,
+    name: 'Admin',
+    news: { category: 'Negocios' },
+  };
 
   constructor() {}
 
   login({ email, password }: IAuthLogin): boolean {
-    if (email === this.correctEmail && password === this.correctPassword) {
-      this.userProfile.email = email;
-      this.userProfile.name = "Admin";
+    if (email === correctEmail && password === correctPassword) {
       localStorage.setItem('isLoggedIn', 'true');
       localStorage.setItem('username', JSON.stringify(this.userProfile));
       return true;

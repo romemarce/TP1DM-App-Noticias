@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
-import { IMenuList, initIUserProfile, IProfile, IUserProfile } from 'src/types';
+import { IMenuList, IUserProfile } from 'src/types';
 
 @Component({
   selector: 'app-menu',
@@ -10,7 +10,7 @@ import { IMenuList, initIUserProfile, IProfile, IUserProfile } from 'src/types';
 })
 export class MenuComponent implements OnInit {
   public menuList: IMenuList[] = [];
-  public currentUser: IUserProfile = initIUserProfile;
+  public currentUser: IUserProfile | undefined;
   public isLoggedIn: boolean;
 
   constructor(private auth: AuthService, private router: Router) {

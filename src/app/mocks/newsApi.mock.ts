@@ -3,20 +3,6 @@ export const mockArticles = {
   totalResults: 39,
   articles: [
     {
-      source: { id: null, name: 'GMA' },
-      author: 'Good Morning America',
-      title:
-        "Meet the celebrity cast of 'Dancing with the Stars' season 33 - Good Morning America",
-      description:
-        'Meet the celebrity cast set to hit the ballroom on "Dancing with the Stars" season 33.',
-      url: 'https://www.goodmorningamerica.com/culture/story/dancing-with-the-stars-season-33-cast-113355662',
-      urlToImage:
-        'https://i.abcnewsfe.com/a/d64c0f9a-8b02-40a2-92dc-08c57554d382/dwts-combo-abc-gmh-240903_1725394396554_hpMain_2_16x9.jpg?w=992',
-      publishedAt: '2024-09-04T11:49:03Z',
-      content:
-        'The celebrity cast competing for the coveted Mirrorball Trophy on "Dancing with the Stars" season 33 has been revealed.\r\n"Good Morning America" exclusively announced the full list of celebrities hitt… [+6150 chars]',
-    },
-    {
       source: { id: null, name: 'Page Six' },
       author: 'Riley Cardoza',
       title:

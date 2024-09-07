@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { MenuComponent } from './menu.component';
-import { IMenuList } from 'src/types';
 
 describe('MenuComponent', () => {
   let component: MenuComponent;
@@ -24,16 +22,16 @@ describe('MenuComponent', () => {
   });
 
   it('Deberia mostrar al menos el item iniciar sesion si no esta logueado', ()=>{
-    component.profile.isLoggedIn = false
+    component.isLoggedIn = false
     component.checkProfileUser();
 
     fixture.detectChanges();
     const compile = fixture.debugElement.nativeElement;
-    expect(compile.textContent).toContain('Iniciar Sesion')
+    expect(compile.textContent).toContain('Iniciar Sesión')
   })
 
   it('Deberia mostrar al menos el item dashboard si esta logueado', ()=>{
-    component.profile.isLoggedIn = true // logueado
+    component.isLoggedIn = true // logueado
     component.checkProfileUser();
 
     fixture.detectChanges();

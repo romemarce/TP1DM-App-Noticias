@@ -54,8 +54,7 @@ export interface IAuthLogin {
 export interface IUserProfile {
   email: string,
   name: string,
-}
-export const initIUserProfile: IUserProfile = {
-  email: '',
-  name: ''
+  news: {
+    category: string
+  }
 }

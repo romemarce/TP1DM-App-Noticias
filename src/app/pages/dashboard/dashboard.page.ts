@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { NewsApiService } from 'src/app/services/newsapi.service';
+import { correctEmail } from 'src/contants';
 import { IPost, IUserProfile } from 'src/types';
 
 @Component({
@@ -10,21 +11,29 @@ import { IPost, IUserProfile } from 'src/types';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  user: IUserProfile | undefined;
-  post: IPost[] = [];
-  newsApiService = new NewsApiService();
+  user: IUserProfile = {
+    name: 'Admin',
+    email: correctEmail,
+    news: { category: 'general' },
+  };
+  posts: IPost[] = [];
 
   public isLoggedIn: boolean = false;
 
-  constructor(private router: Router, private auth: AuthService) {
-    this.auth = new AuthService();
+  constructor(
+    private router: Router,
+    private auth: AuthService,
+    private newsApiService: NewsApiService
+  ) {
     this.isLoggedIn = this.auth.isLoggedIn();
   }
 
-  async ngOnInit() {
+  ngOnInit() {
     if (this.isLoggedIn) {
       this.user = this.auth.currentUser();
-      this.post = (await this.newsApiService.getPost()) || [];
+      this.newsApiService
+        .getPost({category: this.user.news.category})
+        .subscribe((data) => (this.posts = data));
     } else {
       this.router.navigate(['./home']);
     }

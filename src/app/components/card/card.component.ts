@@ -7,5 +7,14 @@ import { IPost } from 'src/types';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent {
-  @Input() post: IPost | undefined;
+  @Input() post: IPost = {
+    content: '',
+    description: '',
+    publishedAt: '',
+    title: '',
+    urlToImage: '',
+    source: {
+      name: '',
+    },
+  };
 }

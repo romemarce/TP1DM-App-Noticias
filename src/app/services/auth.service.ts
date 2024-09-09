@@ -9,7 +9,7 @@ export class AuthService {
   private userProfile: IUserProfile = {
     email: correctEmail,
     name: 'Admin',
-    news: { category: 'Negocios' },
+    news: { category: 'general' },
   };
 
   constructor() {}

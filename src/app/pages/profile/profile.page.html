@@ -1,68 +1,85 @@
 <app-layout [title]="'Profile'">
   <div id="container">
-      <!-- Sección de Accesos -->
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Accesos</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-item>
-            <ion-label>Permisos</ion-label>
-            <ion-toggle [(ngModel)]="profile.access.permissions"></ion-toggle>
-          </ion-item>
-          <ion-item>
-            <ion-label>Notificaciones</ion-label>
-            <ion-toggle [(ngModel)]="profile.access.notifications"></ion-toggle>
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
-    
-      <!-- Sección de Preferencias -->
-      <ion-card>
-        <ion-card-header>
-          <ion-card-title>Preferencias</ion-card-title>
-        </ion-card-header>
-        <ion-card-content>
-          <ion-item>
-            <ion-label>Elementos por pagina</ion-label>
-            <ion-select [(ngModel)]="profile.preferences.pageSize">
-              <ion-select-option value="5">5</ion-select-option>
-              <ion-select-option value="10">10</ion-select-option>
-              <ion-select-option value="15">15</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Idioma</ion-label>
-            <ion-select [(ngModel)]="profile.preferences.language">
-              <ion-select-option value="en">Inglés</ion-select-option>
-              <ion-select-option value="es">Español</ion-select-option>
-            </ion-select>
-          </ion-item>
-          <ion-item>
-            <ion-label>Categorias</ion-label>
-            <ion-select [(ngModel)]="profile.preferences.category">
-              <ion-select-option value="business">Negocios</ion-select-option>
-              <ion-select-option value="entertainment">Entretenimiento</ion-select-option>
-              <ion-select-option value="general">General</ion-select-option>
-              <ion-select-option value="health">Salud</ion-select-option>
-              <ion-select-option value="science">Ciencia</ion-select-option>
-              <ion-select-option value="sports">Deportes</ion-select-option>
-              <ion-select-option value="technology">Tecnologia</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-card-content>
-      </ion-card>
+    <!-- Sección de Perfil -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Perfil</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-input type="password" labelPlacement="stacked" label="Contraseña"
+            placeholder="Ingresar nueva contraseña" />
+        </ion-item>
+        <ion-item>
+          <ion-button (click)="captureImage()" fill="outline" color="dark">Cambiar avatar</ion-button>
+          <img *ngIf="image" [src]="image" />
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
 
-      <ion-card>
-        <ion-toolbar>
-          <ion-buttons slot="start">
-            <ion-button (click)="goBack()">Volver</ion-button>
-          </ion-buttons>
-          <ion-buttons slot="end">
-            <ion-button (click)="saveProfile()">Guardar</ion-button>
-          </ion-buttons>
-        </ion-toolbar>
-      </ion-card>
+    <!-- Sección de Accesos -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Accesos</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Permisos</ion-label>
+          <ion-toggle [(ngModel)]="profile.access.permissions"></ion-toggle>
+        </ion-item>
+        <ion-item>
+          <ion-label>Notificaciones</ion-label>
+          <ion-toggle [(ngModel)]="profile.access.notifications"></ion-toggle>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Sección de Preferencias -->
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Preferencias</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label>Elementos por pagina</ion-label>
+          <ion-select [(ngModel)]="profile.preferences.pageSize">
+            <ion-select-option value="5">5</ion-select-option>
+            <ion-select-option value="10">10</ion-select-option>
+            <ion-select-option value="15">15</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Idioma</ion-label>
+          <ion-select [(ngModel)]="profile.preferences.language">
+            <ion-select-option value="en">Inglés</ion-select-option>
+            <ion-select-option value="es">Español</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label>Categorias</ion-label>
+          <ion-select [(ngModel)]="profile.preferences.category">
+            <ion-select-option value="business">Negocios</ion-select-option>
+            <ion-select-option value="entertainment">Entretenimiento</ion-select-option>
+            <ion-select-option value="general">General</ion-select-option>
+            <ion-select-option value="health">Salud</ion-select-option>
+            <ion-select-option value="science">Ciencia</ion-select-option>
+            <ion-select-option value="sports">Deportes</ion-select-option>
+            <ion-select-option value="technology">Tecnologia</ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-button (click)="goBack()">Volver</ion-button>
+        </ion-buttons>
+        <ion-buttons slot="end">
+          <ion-button (click)="saveProfile()">Guardar</ion-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-card>
 
   </div>
 </app-layout>

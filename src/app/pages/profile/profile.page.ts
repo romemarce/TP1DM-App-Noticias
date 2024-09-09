@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Camera, CameraResultType, CameraSource } from '@capacitor/camera';
 
 @Component({
   selector: 'app-profile',
@@ -20,6 +21,23 @@ export class ProfilePage {
       category: 'business',
     },
   };
+
+  public image: string | undefined = '';
+
+  async captureImage() {
+    try {
+      const result = await Camera.getPhoto({
+        quality: 100,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+        source: CameraSource.Camera,
+      });
+
+      this.image = result.dataUrl;
+    } catch (error) {
+      console.error('Error capturing image:', error);
+    }
+  }
 
   saveProfile() {
     // Implementar la lógica para guardar el perfil

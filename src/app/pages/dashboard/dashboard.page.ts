@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth.service';
 import { NewsApiService } from 'src/app/services/newsapi.service';
 import { correctEmail } from 'src/contants';
@@ -23,16 +24,22 @@ export class DashboardPage implements OnInit {
   constructor(
     private router: Router,
     private auth: AuthService,
-    private newsApiService: NewsApiService
+    private newsApiService: NewsApiService,
+    private platform: Platform
   ) {
     this.isLoggedIn = this.auth.isLoggedIn();
+    this.dontBack();
+  }
+
+  dontBack() {
+    this.platform.backButton.subscribeWithPriority(10, () => console.log('Not found'));
   }
 
   ngOnInit() {
     if (this.isLoggedIn) {
       this.user = this.auth.currentUser();
       this.newsApiService
-        .getPost({category: this.user.news.category})
+        .getPost({ category: this.user.news.category })
         .subscribe((data) => (this.posts = data));
     } else {
       this.router.navigate(['./home']);

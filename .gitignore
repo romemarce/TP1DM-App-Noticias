@@ -65,8 +65,6 @@ yarn-error.log
 /libpeerconnection.log
 testem.log
 /typings
-# .gitignore
-src/environments/environment*.ts
 
 
 # System files
